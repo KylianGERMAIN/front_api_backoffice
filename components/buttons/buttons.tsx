@@ -8,7 +8,15 @@ interface Props {
   ClickFonction: (text: string | JSX.Element) => void;
 }
 
-export const IconButton = ({
+export const IconButton = ({ icon, cssDiv, ClickFonction }: Props) => {
+  return (
+    <div className={cssDiv} onClick={() => ClickFonction(icon)}>
+      {icon}
+    </div>
+  );
+};
+
+export const IconTextButton = ({
   icon,
   text,
   cssDiv,

@@ -1,14 +1,12 @@
 import Head from "next/head";
 import Image from "next/image";
 import React from "react";
-import { IconButton } from "../components/buttons/buttons";
+import { IconTextButton } from "../components/buttons/buttons";
 import { FiLogIn } from "react-icons/fi";
 import { MdCreate } from "react-icons/md";
 import Link from "next/link";
 
 export default function Home() {
-  var date = new Date().toLocaleDateString("fr-FR");
-
   return (
     <div className="bg-gray-200 w-screen h-screen grid content-center justify-center">
       <div className="flex items-center content-center justify-center w-screen pb-5">
@@ -29,7 +27,7 @@ export default function Home() {
             </p>
             <Link href="/signin">
               <a>
-                <IconButton
+                <IconTextButton
                   icon={
                     <MdCreate
                       style={{

@@ -4,4 +4,8 @@ const nextConfig = {
   swcMinify: true,
 }
 
+module.exports = {
+  reactStrictMode: true,
+};
+
 module.exports = nextConfig
