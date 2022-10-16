@@ -2,8 +2,6 @@
 import Head from "next/head";
 import Image from "next/image";
 import React, { useState } from "react";
-import { FiLogIn } from "react-icons/fi";
-import { MdCreate } from "react-icons/md";
 import Link from "next/link";
 import { Button, IconButton } from "../../components/buttons/buttons";
 import { signInAPI } from "../api/auth/sign";

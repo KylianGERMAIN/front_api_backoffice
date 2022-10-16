@@ -1,4 +1,5 @@
 import React from "react";
+import { SideBar } from "../../containers/home/sidebar";
 import Header from "../header/header";
 
 interface Props {
@@ -8,10 +9,16 @@ interface Props {
 }
 
 const Layout = ({ children, paddingBottom = false, lang }: Props) => (
-  <div className="">
-    <Header />
+  <div className="w-full h-full ">
+    <div className="sm:hidden grid">
+      <Header />
+      {children}
+    </div>
 
-    {children}
+    <div className="hidden sm:flex">
+      <SideBar />
+      {children}
+    </div>
 
     {/* <Footer customClassName={paddingBottom ? 'mt-10' : ''} /> */}
   </div>

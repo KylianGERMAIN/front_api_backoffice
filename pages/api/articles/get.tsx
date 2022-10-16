@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { errorListArticle } from "./error";
 import { refreshAccessToken } from "../token";
 
-export async function getArticle(): Promise<string | AxiosResponse> {
+export async function getArticle(): Promise<any> {
   var config = {
     method: "get",
     url: `${process.env.NEXT_PUBLIC_API_URL}/articles/getArticles`,
@@ -20,7 +20,7 @@ export async function getArticle(): Promise<string | AxiosResponse> {
         await refreshAccessToken();
         return await getArticle();
       }
-      return errorListArticle(error.response.data.message);
+      return { error: errorListArticle(error.response.data.message) };
     }
   });
   return response;
