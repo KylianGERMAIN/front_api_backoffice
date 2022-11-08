@@ -90,7 +90,7 @@ export default function Login() {
           <p className="noAccount">
             Don&#39;t have an account?{" "}
             <Link href="/signup">
-              <a className="link">Sign up</a>
+              <span className="link">Sign up</span>
             </Link>
           </p>
         </div>

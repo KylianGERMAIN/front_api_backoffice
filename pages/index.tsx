@@ -23,21 +23,19 @@ export default function Home() {
         <div className="frameBlock">
           <p className="message">The server is running successfully</p>
           <Link href="/signin">
-            <a>
-              <IconTextButton
-                icon={
-                  <MdCreate
-                    style={{
-                      color: "white",
-                    }}
-                  />
-                }
-                text="Open the administration"
-                cssDiv="iconButtonDiv"
-                cssText="textButton"
-                ClickFonction={() => {}}
-              />
-            </a>
+            <IconTextButton
+              icon={
+                <MdCreate
+                  style={{
+                    color: "white",
+                  }}
+                />
+              }
+              text="Open the administration"
+              cssDiv="iconButtonDiv"
+              cssText="textButton"
+              ClickFonction={() => {}}
+            />
           </Link>
         </div>
       </div>
