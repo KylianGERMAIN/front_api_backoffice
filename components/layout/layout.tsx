@@ -1,6 +1,6 @@
 import React from "react";
+import Header from "../../containers/header/header";
 import { SideBar } from "../../containers/home/sidebar";
-import Header from "../header/header";
 
 interface Props {
   children: JSX.Element | JSX.Element[];
@@ -9,14 +9,15 @@ interface Props {
 }
 
 const Layout = ({ children, paddingBottom = false, lang }: Props) => (
-  <div className="w-full h-full ">
-    <div className="sm:hidden grid">
+  <div className="">
+    <div className="headerSection">
       <Header />
       {children}
     </div>
 
-    <div className="hidden sm:flex">
+    <div className="sideBarSection">
       <SideBar />
+      <div className="minsize"></div>
       {children}
     </div>
 

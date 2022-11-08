@@ -1,0 +1,123 @@
+.sidebarContainer {
+    position: fixed;
+    flex-direction: column;
+    justify-content: space-between;
+    display: flex;
+    height: 100%;
+    width: 320px;
+
+    .logoContainer {
+        align-items: center;
+        gap: 10px;
+        display: flex;
+        height: 100px;
+        margin-left: 30px;
+        
+        .img {
+            width: 80px;
+        }
+
+        .titleContainer {
+            align-items: center;
+            display: flex;
+
+            .pTitle {
+                color: #4535B3;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .liContainer {
+        gap: 30px;
+        display: grid;
+        margin-top: 30px;
+        
+        .liElement {
+            display: flex;
+
+            .borderColor {
+                display: block;
+                width: 4px;
+                background-color: #4535B3;
+            }
+
+            .borderNoColor {
+                display: block;
+                width: 4px;
+            }
+
+            .buttonDiv {
+                gap: 12px;
+                align-items: center;
+                display: inline-flex;
+                margin-left: 45px;
+                cursor: pointer;
+            }
+
+            .buttonTextSelected {
+                font-weight: bold;
+                color: #4535B3;
+
+            }
+            .buttonTextNotSelected {
+                font-weight: bold;
+
+            }
+        }
+    }
+
+    .userContainer {
+        padding-bottom: 30px;
+        border-top: solid 1px rgb(204, 204, 204);
+        background-color: rgb(250, 250, 250);
+
+        .profilSection {
+            align-items: center;
+            gap: 18px;
+            display: flex;
+            padding-top: 20px;
+            padding-left: 40px;
+            padding-bottom: 12px;
+
+            .name {
+                font-weight: bold;
+            }
+
+            .role {
+                color: rgb(218, 218, 218);
+            }
+        }
+
+        .editSection {
+            padding-left: 40px;
+
+            .iconButtonDiv{
+                gap: 1rem;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                padding: 2px;
+                border-radius: 12px;
+                width: 150px;
+                background-color: $purple;
+                cursor: pointer;
+            }
+
+            .iconButtonDiv:hover{
+                background-color: $light-purple;
+            }
+
+            .textButton{
+                color: white;
+                font-size: 15px;
+            }
+        }
+    }
+}
+
+.minsize {
+    min-width: 320px;
+    max-width: 320px;
+    width: 320px;
+}

@@ -1,0 +1,70 @@
+@import "../variable.scss";
+
+.mainIndex {
+    align-content: center;
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+
+    background-color: $base-color;
+    
+    .imageWText {
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        padding-bottom: 5px;
+    }
+
+    .h1Index {
+        font-weight: bold;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .frame {
+        justify-content: center;
+        display: grid;
+
+
+        .frameBlock {
+            padding: 1rem;
+            border-top: solid 4px $purple;
+            border-radius: 10px;
+            background-color: white;
+
+            .message {
+                padding-top: 10px;
+                padding-bottom: 20px;
+                text-align: center;
+                font-weight: bold;
+            }
+
+            .iconButtonDiv{
+                gap: 1rem;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+                padding: 4px;
+                border-radius: 12px;
+                background-color: $purple;
+                cursor: pointer;
+            }
+
+            .iconButtonDiv:hover{
+                background-color: $light-purple;
+            }
+
+            .textButton{
+                color: white;
+            }
+        
+        }
+
+        @media only screen and (min-width: 768px) {
+            .frameBlock {
+                width: 600px;
+            }
+        }
+
+    }
+}

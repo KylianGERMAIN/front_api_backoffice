@@ -1,9 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
-import Head from "next/head";
 import Image from "next/image";
 import React, { useState } from "react";
-import { FiLogIn } from "react-icons/fi";
-import { MdCreate } from "react-icons/md";
 import Link from "next/link";
 import { Button, IconButton } from "../../components/buttons/buttons";
 import { signUpAPI } from "../api/auth/sign";
@@ -19,82 +15,78 @@ export default function Register() {
   const router = useRouter();
 
   return (
-    <div className="w-screen h-screen flex">
-      <div className="w-full md:w-1/2 grid ">
-        <div className="grid content-center justify-center">
-          <div className="px-10 sm:w-[400px]">
-            <div className="pb-10">
-              <p className="text-3xl font-bold pb-8">Welcome</p>
-              <p className="text-sm text-gray-500">
-                Welcome! Please enter your details
-              </p>
-            </div>
-            <div className="pb-5 grid">
-              <label className="text-sm text-gray-500" htmlFor="first">
-                Email
-              </label>
-              <input
-                onChange={(e) => setEmail(e.target.value)}
-                value={Email}
-                className="border-gray-200 w-full rounded h-[40px] border-2 placeholder:text-sm p-2"
-                type="email"
-                placeholder="Enter your email"
-              />
-            </div>
-
-            <div className="pb-5 grid">
-              <label className="text-sm text-gray-500" htmlFor="last">
-                Password
-              </label>
-              <input
-                onChange={(e) => setPassword(e.target.value)}
-                value={Password}
-                className="border-gray-200 w-full rounded h-[40px] border-2 placeholder:text-sm p-2"
-                type="password"
-                id="first"
-                name="first"
-                placeholder="•••••••"
-              />
-            </div>
-            <p className="w-full text-sm text-red-600 font-bold">{Error}</p>
-            {Loading === false ? (
-              <Button
-                text="Sign up"
-                cssDiv="cursor-pointer flex space-x-2 items-center border-none hover:bg-[#7C54D5] bg-[#4535B3]  border-2 rounded-lg p-2 justify-center mt-2"
-                cssText="text-white"
-                ClickFonction={async () => {
-                  if (Email != "" && Password != "") {
-                    setLoading(true);
-                    setError("");
-                    setError(await signUpAPI(Email, Password));
-                    setLoading(false);
-                    if (Error === "") {
-                      router.push("/home");
-                    }
-                  } else {
-                    errorVoidInput(Email, Password, setError);
-                  }
-                }}
-                icon={undefined}
-              />
-            ) : (
-              <IconButton
-                text=""
-                cssDiv="cursor-pointer flex space-x-2 items-center border-none hover:bg-[#7C54D5] bg-[#4535B3]  border-2 rounded-lg p-2 justify-center mt-2"
-                cssText="text-white"
-                ClickFonction={async () => {}}
-                icon={
-                  <Image src="/loading.svg" alt="next" width={25} height={25} />
-                }
-              />
-            )}
-            <p className="text-sm text-gray-500 text-center pt-4">
-              Already have an account?{" "}
-              <Link href="/signin">
-                <a className="text-[#4535B3] cursor-pointer">Sign in</a>
-              </Link>
-            </p>
+    <div className="mainSignin">
+      <div className="partSign">
+        <div className="containerSign">
+          <div className="containerTitle">
+            <p className="title">Welcome</p>
+            <p className="description">Welcome! Please enter your details</p>
           </div>
+          <div className="inputContainer">
+            <label className="label" htmlFor="first">
+              Email
+            </label>
+            <input
+              onChange={(e) => setEmail(e.target.value)}
+              value={Email}
+              className="input"
+              type="email"
+              placeholder="Enter your email"
+            />
+          </div>
+
+          <div className="inputContainer">
+            <label className="label" htmlFor="last">
+              Password
+            </label>
+            <input
+              onChange={(e) => setPassword(e.target.value)}
+              value={Password}
+              className="input"
+              type="password"
+              id="first"
+              name="first"
+              placeholder="•••••••"
+            />
+          </div>
+          <p className="errorMessage">{Error}</p>
+          {Loading === false ? (
+            <Button
+              text="Sign up"
+              cssDiv="buttonDiv"
+              cssText="buttonText"
+              ClickFonction={async () => {
+                if (Email != "" && Password != "") {
+                  setLoading(true);
+                  setError("");
+                  setError(await signUpAPI(Email, Password));
+                  setLoading(false);
+                  if (Error === "") {
+                    router.push("/home");
+                  }
+                } else {
+                  errorVoidInput(Email, Password, setError);
+                }
+              }}
+              icon={undefined}
+            />
+          ) : (
+            <IconButton
+              text=""
+              cssDiv="buttonDiv"
+              cssText="buttonText"
+              ClickFonction={async () => {}}
+              icon={
+                <Image src="/loading.svg" alt="next" width={25} height={25} />
+              }
+            />
+          )}
+          <p className="noAccount">
+            Already have an account?{" "}
+            <Link href="/signin">
+              <a className="link">Sign in</a>
+            </Link>
+          </p>
         </div>
       </div>
       <SignVisuel src={"/image.png"} alt={"Picture of the author"} />

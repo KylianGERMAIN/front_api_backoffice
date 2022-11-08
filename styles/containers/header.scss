@@ -1,0 +1,82 @@
+.burgerMenu {
+    display: grid;
+    width: 100%;
+
+    .headerspace {
+        justify-content: space-between;
+        display: flex;
+    
+        .openButton {
+            padding: 8px;
+            background-color: white;
+            cursor: pointer;
+        }
+
+        .logoContainer {
+            gap: 20px;
+            align-items: center;
+            display: flex;
+            padding-left: 20px;
+
+            .pTitle {
+                color: #4535B3;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .panel {
+        z-index: 100000;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        background-color: white;
+
+        .closeButton {
+            padding: 20px;
+        }
+
+        .closeButton:hover {
+            background-color: rgb(243, 243, 243);
+        }
+
+        .ulElement {
+            gap: 30px;
+            display: grid;
+            padding-top: 30px;
+            .liElement {
+                display: flex;
+
+                .borderColor {
+                    display: block;
+                    width: 4px;
+                    background-color: #4535B3;
+                }
+
+                .borderNoColor {
+                    display: block;
+                    width: 4px;
+                }
+
+                .buttonDiv {
+                    gap: 12px;
+                    align-items: center;
+                    display: inline-flex;
+                    margin-left: 45px;
+                    cursor: pointer;
+                }
+
+                .buttonTextSelected {
+                    font-weight: bold;
+                    color: #4535B3;
+
+                }
+                .buttonTextNotSelected {
+                    font-weight: bold;
+
+                }
+            }
+        }
+    }
+}

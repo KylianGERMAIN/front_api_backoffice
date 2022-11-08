@@ -1,0 +1,20 @@
+.rowTable {
+    border-bottom: 2px solid $light-grey;
+    background-color: white;
+    cursor: pointer;
+
+    .tdElement {
+
+        border-bottom: solid 2px rgb(212, 212, 212);
+        padding: 0;
+        margin: 0;
+        .containerAction {
+            gap: 20px;
+            justify-content: flex-end;
+            align-items: center;
+            display: flex;
+            text-align: right;
+        }
+
+    }
+}

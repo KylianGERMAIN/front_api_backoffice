@@ -1,0 +1,115 @@
+@import "../variable.scss";
+
+.mainSignin {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh;
+    width: 100%;
+
+    .partSign {
+        display: grid;
+        width: 100%;
+        background-color: white;
+
+        .containerSign {
+            justify-content: center;
+            align-content: center;
+            display: grid;
+
+            .containerTitle {
+                padding-bottom: 2rem;
+
+                .title{
+                    padding-bottom: 2rem;
+                    font-size: 32px;
+                    font-weight: bold;
+                }
+
+                .description{
+                    font-size: 14px;
+                    color: $grey;
+                }
+
+            }
+
+        }
+
+        .inputContainer {
+            display: grid;
+            padding-bottom: 20px;
+
+            .label {
+                font-size: 14px;
+                color: $grey;
+            }
+
+            .input {
+                border: solid 2px $light-grey;
+                border-radius: 5px;
+                padding: 6px;
+            }
+
+            .input::placeholder {
+                font-size: 14px;
+            }
+        }
+
+        .errorMessage {
+            width: 200px;
+            font-size: 14px;
+            font-weight: bold;
+            color: $error;
+        }
+
+        .buttonDiv {
+            justify-content: center;
+            display: flex;
+            border: none;
+            border-radius: 5px;
+            padding: 7px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: $purple;
+        }
+
+        .buttonDiv:hover {
+            background-color: $light-purple;
+        }
+
+        .buttonText {
+            color: white;
+        }
+
+        .noAccount {
+            padding-top: 1rem;
+            font-size: 14px;
+            color: $grey;
+            text-align: center;
+            
+            .link {
+                color: $purple;
+                cursor: pointer;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        .partSign {
+            width: 50%;
+        }
+    }
+}
+
+.signVisuel {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background-color: $light-grey;
+    width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+    .signVisuel {
+        display: none;
+    }
+}

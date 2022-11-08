@@ -1,0 +1,157 @@
+.mainHome {
+    width: 100%;
+    
+    .containerHome {
+        height: 100%;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border: solid 30px rgb(243, 243, 243);
+
+        .containerHeader {
+            gap: 20px;
+            display: flex;
+            padding: 0px 0px 20px 0px;
+            background-color: rgb(243, 243, 243);
+            
+            .headerTotal {
+                padding: 10px;
+                width: 200px;
+                height: 100px;
+                border-radius: 15px;
+                background-color: white;
+
+                .pLabel {
+                    text-align: left;
+                    font-size: 12px;
+                    color: gray;
+                }
+
+                .totalAndIcon {
+                    justify-content: space-between;
+                    align-items: center;
+                    display: flex;
+                    padding-top: 8px;
+
+                    .pNumber {
+                        font-size: 25;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+            .searchContainer {
+                padding: 10px;
+                width: 100%;
+                max-width: 550px;
+                height: 100px;
+                border-radius: 10px;
+                background-color: white;
+
+                .searchLabel {
+                    gap: 10px;
+                    align-items: center;
+                    display: flex;
+                    padding-bottom: 5px;
+
+                    .pLabel {
+                        text-align: left;
+                        font-size: 12px;
+                        color: gray;
+                    }
+                }
+
+                .searchInputContainer {
+                    justify-content: space-between;
+                    align-items: center;
+                    gap: 5px;
+                    display: flex;
+                    cursor: pointer;
+
+                    .searchInput {
+                        width: 100%;
+                        border: 2px solid #4535B3;
+                        border-radius: 10px;
+                        padding: 4px;
+                        padding-left: 8px;
+                        font-size: 15px;
+                    }
+                    .searchInput:focus {
+                        outline: none;
+                    }
+
+                    .iconButtonDiv{
+                        gap: 1rem;
+                        align-items: center;
+                        justify-content: center;
+                        display: flex;
+                        padding: 8px;
+                        border-radius: 12px;
+                        width: 60px;
+                        background-color: $purple;
+                        cursor: pointer;
+                    }
+        
+                    .iconButtonDiv:hover{
+                        background-color: $light-purple;
+                    }
+
+                    .textButton{
+                        color: white;
+                    }
+                }
+                
+            }
+
+        }
+
+        .tableMain {
+            background-color: rgb(243, 243, 243);
+
+            .tableContainer {
+                border-top-left-radius: 20px;
+                border-radius: 20px;
+                padding: 20px;
+                background-color: white;
+
+                .table {
+                    overflow: hidden;
+                    width: 100%;
+                    background-color: white;
+
+                    .columnHeader {
+                        padding-top: 30px;
+                        padding: 8px;
+                        border-bottom: 2px solid $light-grey;
+                        color: rgb(82, 80, 80);
+                        text-align: left;
+                        font-weight: normal;
+                    }
+
+                    @media only screen and (min-width: 768px) {
+                        .rowTable {
+                            height: 60px;
+                        }
+                    } 
+                }
+            }
+        }
+
+    }
+
+    .tableRest {
+        display: block;
+        height: 100%;
+        width: 100%;
+        color: rgb(243, 243, 243);
+        background-color: rgb(243, 243, 243);
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    .mainHome {
+        padding-top: 2vh;
+        padding-right: 2vh;
+        width: calc(100vw - 340px);
+    }
+} 

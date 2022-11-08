@@ -1,0 +1,23 @@
+
+.headerSection {
+    display: grid;
+    height: 100%;
+}
+
+.sideBarSection {
+    display: none;
+}
+
+@media only screen and (min-width: 768px) {
+   
+    .headerSection  {
+        display: none;
+    }
+
+    .sideBarSection {
+        display: flex;
+        flex-wrap: wrap;
+        height: 100vh;
+    }
+}
+
