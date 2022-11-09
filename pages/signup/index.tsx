@@ -60,10 +60,10 @@ export default function Register() {
                   setLoading(true);
                   setError("");
                   setError(await signUpAPI(Email, Password));
-                  setLoading(false);
                   if (Error === "") {
                     router.push("/home");
                   }
+                  setLoading(false);
                 } else {
                   errorVoidInput(Email, Password, setError);
                 }

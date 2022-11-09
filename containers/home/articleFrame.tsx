@@ -43,13 +43,6 @@ export function ArticleFrame({
         <div className="containerAction">
           <IconButton
             text={""}
-            icon={<BiDuplicate color={"#4535B3"} size={20} />}
-            cssDiv={""}
-            cssText={""}
-            ClickFonction={() => console.log("delete")}
-          />
-          <IconButton
-            text={""}
             icon={<RiDeleteBin5Fill color={"#4535B3"} size={20} />}
             cssDiv={"pr-4"}
             cssText={""}

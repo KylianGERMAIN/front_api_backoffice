@@ -29,7 +29,8 @@ export async function signInAPI(
         response.data.accessToken
       );
     });
-  } catch (error) {
+    return "";
+  } catch (error: any) {
     console.log(error);
     if (error.response.data.errors === undefined) {
       return errorListAuth(error.response.data.message);
@@ -67,9 +68,10 @@ export async function signUpAPI(
         "accessToken_APIbackoffice",
         response.data.accessToken
       );
-      return "";
     });
-  } catch (error) {
+
+    return "";
+  } catch (error: any) {
     if (error.response.data.errors === undefined) {
       return errorListAuth(error.response.data.message);
     } else {

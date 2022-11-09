@@ -21,6 +21,6 @@ export function errorListAuth(error: String) {
     case "Email is wrongly formatted":
       return "Your email is wrongly formatted";
     default:
-      break;
+      return "";
   }
 }

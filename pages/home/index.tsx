@@ -6,23 +6,28 @@ import { getArticle } from "../api/articles/get";
 import Layout from "../../components/layout/layout";
 import HeaderArticles from "../../components/header/headerArticle";
 import { FaSearch } from "react-icons/fa";
+import { AiOutlinePlus } from "react-icons/ai";
 import { IconButton } from "../../components/buttons/buttons";
 import { ArticleFrame } from "../../containers/home/articleFrame";
+import { Article } from "../../interface/article";
+import { deleteArticle } from "../api/articles/post";
 
 export default function Home() {
   const router = useRouter();
-  const [totalArticle, setTotalArticle] = useState(null);
-  const [Articles, setArticles] = useState(null);
+  const [totalArticle, setTotalArticle] = useState("");
+  const [search, setSearch] = useState("");
+  const [Articles, setArticles] = useState<Article[]>();
   const [isLoading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(true);
-    getArticle().then(function (result) {
+  if (isLoading === true) {
+    var querySearch = "";
+    if (router.query.search) {
+      querySearch = router.query.search as string;
+    }
+    getArticle(querySearch).then(function (result) {
       if (result.error == undefined) {
         setTotalArticle(result.data.meta.pagination.total);
-        setLoading(false);
-
-        var article = [];
+        var article: Article[] = [];
         for (var i = 0; i != result.data.data.length; i++) {
           article.push({
             key: result.data.data[i].date,
@@ -33,18 +38,25 @@ export default function Home() {
           });
         }
         setArticles(article);
+        setLoading(false);
       }
     });
-  }, []);
+  }
 
-  function removeArticle(str: String) {
-    console.log(Articles);
-    // setArticles((current) => {
-    //   current.filter((Article) => {
-    //     console.log(Article);
-    //     // Article.id !== str;
-    //   });
-    // });
+  async function removeArticle(str: string) {
+    console.log(str);
+    var result = await deleteArticle(str);
+    console.log(result);
+    if (!result.error) {
+      setArticles((current: any) => current.filter((i: any) => i.id !== str));
+      setLoading(true);
+    }
+  }
+
+  async function searchArticle() {
+    router.query.search = search;
+    router.push(router);
+    setLoading(true);
   }
 
   return (
@@ -67,13 +79,17 @@ export default function Home() {
                       type="text"
                       id="last"
                       name="last"
+                      onChange={(e) => setSearch(e.target.value)}
+                      value={search}
                       placeholder="Votre recherche"
                     />
                     <IconButton
                       text=""
                       cssDiv="iconButtonDiv"
                       cssText="textButton"
-                      ClickFonction={async () => {}}
+                      ClickFonction={async () => {
+                        searchArticle();
+                      }}
                       icon={<FaSearch size={13} color={"white"} />}
                     />
                   </div>
@@ -81,7 +97,12 @@ export default function Home() {
               </div>
               <div className="tableMain">
                 <div className="tableContainer">
-                  <p>All Articles</p>
+                  <div className="topTable">
+                    <p>All Articles</p>
+                    <button onClick={() => {}}>
+                      <AiOutlinePlus size={13} color={"grey"} /> New article
+                    </button>
+                  </div>
                   <table className="table" width="325" cellSpacing="0">
                     <thead>
                       <tr>
@@ -95,16 +116,18 @@ export default function Home() {
                       </tr>
                     </thead>
                     <tbody>
-                      {Articles.map((element: any, key: any) => (
-                        <ArticleFrame
-                          key={element.date}
-                          title={element.title}
-                          content={element.content}
-                          date={element.date}
-                          id={element.id}
-                          removeArticle={removeArticle}
-                        />
-                      ))}
+                      {Articles != undefined
+                        ? Articles.map((element: any, key: any) => (
+                            <ArticleFrame
+                              key={key}
+                              title={element.title}
+                              content={element.content}
+                              date={element.date}
+                              id={element.id}
+                              removeArticle={removeArticle}
+                            />
+                          ))
+                        : null}
                     </tbody>
                   </table>
                 </div>
@@ -112,7 +135,14 @@ export default function Home() {
             </div>
           </>
         ) : (
-          ""
+          <div className="loading">
+            <div className="lds-ring">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+            </div>
+          </div>
         )}
       </div>
     </Layout>

@@ -34,7 +34,7 @@ export const IconTextButton = ({
 export const Button = ({ text, cssDiv, cssText, ClickFonction }: Props) => {
   return (
     <div className={cssDiv} onClick={() => ClickFonction(text)}>
-      <p className={cssText}>{text}</p>
+      <span className={cssText}>{text}</span>
     </div>
   );
 };

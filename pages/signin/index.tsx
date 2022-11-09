@@ -63,13 +63,15 @@ export default function Login() {
               cssText="buttonText"
               ClickFonction={async () => {
                 if (Email != "" && Password != "") {
+                  console.log("lol");
                   setLoading(true);
                   setError("");
                   setError(await signInAPI(Email, Password));
-                  setLoading(false);
+                  console.log(Error);
                   if (Error === "") {
                     router.push("/home");
                   }
+                  setLoading(false);
                 } else {
                   errorVoidInput(Email, Password, setError);
                 }
@@ -83,7 +85,7 @@ export default function Login() {
               cssText="buttonText"
               ClickFonction={async () => {}}
               icon={
-                <Image src="/loading.svg" alt="next" width={25} height={25} />
+                <Image src="/loading.svg" alt="next" width={19} height={19} />
               }
             />
           )}

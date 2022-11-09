@@ -11,6 +11,6 @@ export function errorListArticle(error: String) {
     case "500 error when calculating the number of articles":
       return "Error when calculating the number of articles";
     default:
-      break;
+      return "500 Other";
   }
 }
