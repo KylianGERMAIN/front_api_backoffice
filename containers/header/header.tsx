@@ -74,44 +74,6 @@ const Header = ({}: Props) => {
                 />
               </div>
             )}
-
-            {asPath.includes("settings") ? (
-              <div className="liElement">
-                <div className="borderColor"></div>
-                <IconTextButton
-                  text={"Settings"}
-                  icon={<IoMdSettings size={20} color={"#4535B3"} />}
-                  cssDiv={"buttonDiv"}
-                  cssText={"buttonTextSelected"}
-                  ClickFonction={() => {}}
-                />
-              </div>
-            ) : (
-              <div className="liElement">
-                <div className="borderNoColor"></div>
-                <IconTextButton
-                  text={"Settings"}
-                  icon={<IoMdSettings size={20} />}
-                  cssDiv={"buttonDiv"}
-                  cssText={"buttonTextNotSelected"}
-                  ClickFonction={() => {
-                    router.push("/settings");
-                  }}
-                />
-              </div>
-            )}
-            <div className="liElement">
-              <div className="borderNoColor"></div>
-              <IconTextButton
-                text={"Edit Profile"}
-                icon={<CgProfile size={20} />}
-                cssDiv={"buttonDiv"}
-                cssText={"buttonTextNotSelected"}
-                ClickFonction={() => {
-                  router.push("/");
-                }}
-              />
-            </div>
           </div>
         </Popover.Panel>
       </Transition>

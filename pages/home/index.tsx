@@ -11,6 +11,7 @@ import { IconButton } from "../../components/buttons/buttons";
 import { ArticleFrame } from "../../containers/home/articleFrame";
 import { Article } from "../../interface/article";
 import { deleteArticle } from "../api/articles/post";
+import { Modal } from "../../containers/modal/modal";
 
 export default function Home() {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function Home() {
   const [search, setSearch] = useState("");
   const [Articles, setArticles] = useState<Article[]>();
   const [isLoading, setLoading] = useState(true);
+  const [modal, setModal] = useState(false);
 
   if (isLoading === true) {
     var querySearch = "";
@@ -65,6 +67,7 @@ export default function Home() {
         {isLoading === false ? (
           <>
             <div className="containerHome">
+              <Modal status={modal} setStatus={setModal} />
               <div className="containerHeader">
                 <HeaderArticles totalArticle={totalArticle} />
                 <div className="searchContainer">
@@ -99,7 +102,11 @@ export default function Home() {
                 <div className="tableContainer">
                   <div className="topTable">
                     <p>All Articles</p>
-                    <button onClick={() => {}}>
+                    <button
+                      onClick={() => {
+                        setModal(true);
+                      }}
+                    >
                       <AiOutlinePlus size={13} color={"grey"} /> New article
                     </button>
                   </div>
