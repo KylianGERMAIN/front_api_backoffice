@@ -5,14 +5,6 @@ import { AiFillDashboard } from "react-icons/ai";
 import { Button, IconTextButton } from "../../components/buttons/buttons";
 import { useRouter } from "next/router";
 
-interface Props {
-  //   text: string;
-  //   icon: any;
-  //   cssDiv: string;
-  //   cssText: string;
-  //   ClickFonction: (text: string | JSX.Element) => void;
-}
-
 export function SideBar() {
   const { asPath } = useRouter();
   const router = useRouter();
