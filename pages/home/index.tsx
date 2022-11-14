@@ -37,13 +37,10 @@ export default function Home() {
     const urlSearchParams = new URLSearchParams(window.location.search);
     var querySearch = "";
     var pagination = "1";
-    if (urlSearchParams.get("search")) {
+    if (urlSearchParams.get("search"))
       querySearch = urlSearchParams.get("search") as string;
-    }
-    if (urlSearchParams.get("pagination")) {
+    if (urlSearchParams.get("pagination"))
       pagination = urlSearchParams.get("pagination") as string;
-    }
-    console.log(pagination);
     getArticle(querySearch, pagination).then(function (result) {
       if (result.error == undefined) {
         setTotalArticle(result.data.meta.pagination.total);
