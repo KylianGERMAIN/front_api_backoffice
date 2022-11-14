@@ -29,21 +29,21 @@ export default function Home() {
   const [updateContent, setUpdateContent] = useState("");
   const [updateID, setUpdateId] = useState("");
 
-  if (isLoading === true) {
+  useEffect(() => {
     setup();
-  }
+  }, [isLoading]);
 
   async function setup() {
     const urlSearchParams = new URLSearchParams(window.location.search);
     var querySearch = "";
     var pagination = "1";
-    const routerr = await useRouter();
     if (urlSearchParams.get("search")) {
       querySearch = urlSearchParams.get("search") as string;
     }
     if (urlSearchParams.get("pagination")) {
       pagination = urlSearchParams.get("pagination") as string;
     }
+    console.log(pagination);
     getArticle(querySearch, pagination).then(function (result) {
       if (result.error == undefined) {
         setTotalArticle(result.data.meta.pagination.total);
@@ -134,46 +134,6 @@ export default function Home() {
                 <div className="tableContainer">
                   <div className="topTable">
                     <span>All Articles</span>
-                    <div className="paginationContainer">
-                      {router.query.pagination != "1" ? (
-                        <Button
-                          text="Précédent"
-                          cssDiv="buttonDiv"
-                          cssText="textButton"
-                          ClickFonction={async () => {
-                            if (router.query.pagination) {
-                              router.query.pagination = String(
-                                Number(router.query.pagination) - 1
-                              );
-                              router.push(router);
-                              setLoading(true);
-                            }
-                          }}
-                          icon={undefined}
-                        />
-                      ) : null}
-                      {String(PageCount) != Pagination ? (
-                        <Button
-                          text="Suivant"
-                          cssDiv="buttonDiv"
-                          cssText="textButton"
-                          ClickFonction={async () => {
-                            if (router.query.pagination) {
-                              router.query.pagination = String(
-                                Number(router.query.pagination) + 1
-                              );
-                              router.push(router);
-                              setLoading(true);
-                            } else {
-                              router.query.pagination = "2";
-                              router.push(router);
-                              setLoading(true);
-                            }
-                          }}
-                          icon={undefined}
-                        />
-                      ) : null}
-                    </div>
                     <button
                       onClick={() => {
                         setModal(true);
@@ -185,9 +145,6 @@ export default function Home() {
                   <table className="table" width="325" cellSpacing="0">
                     <thead>
                       <tr>
-                        <th className="columnHeader">
-                          <input type="checkbox" id="scales" name="scales" />
-                        </th>
                         <th className="columnHeader">Date</th>
                         <th className="columnHeader">Title</th>
                         <th className="columnHeader">Description</th>
@@ -214,6 +171,46 @@ export default function Home() {
                     </tbody>
                   </table>
                 </div>
+              </div>
+              <div className="paginationContainer">
+                {Pagination != "1" ? (
+                  <Button
+                    text="Précédent"
+                    cssDiv="buttonDiv"
+                    cssText="textButton"
+                    ClickFonction={async () => {
+                      if (router.query.pagination) {
+                        router.query.pagination = String(
+                          Number(router.query.pagination) - 1
+                        );
+                        router.push(router);
+                        setLoading(true);
+                      }
+                    }}
+                    icon={undefined}
+                  />
+                ) : null}
+                {String(PageCount) != Pagination && String(PageCount) != "0" ? (
+                  <Button
+                    text="Suivant"
+                    cssDiv="buttonDiv"
+                    cssText="textButton"
+                    ClickFonction={async () => {
+                      if (router.query.pagination) {
+                        router.query.pagination = String(
+                          Number(router.query.pagination) + 1
+                        );
+                        router.push(router);
+                        setLoading(true);
+                      } else {
+                        router.query.pagination = "2";
+                        router.push(router);
+                        setLoading(true);
+                      }
+                    }}
+                    icon={undefined}
+                  />
+                ) : null}
               </div>
             </div>
           </>

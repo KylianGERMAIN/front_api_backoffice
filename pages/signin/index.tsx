@@ -63,7 +63,7 @@ export default function Login() {
                   setError("");
                   setError(await signInAPI(Email, Password));
                   if (Error === "") {
-                    router.push("/home");
+                    router.push("/home?pagination=1");
                   }
                   setLoading(false);
                 } else {

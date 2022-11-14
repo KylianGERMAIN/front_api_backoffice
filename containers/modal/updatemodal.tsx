@@ -68,7 +68,7 @@ export function UpdateModal({
               />
 
               <Button
-                text="Créer"
+                text="Modifer"
                 cssDiv="buttonDiv"
                 cssText="buttonText"
                 ClickFonction={async () => {

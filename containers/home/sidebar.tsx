@@ -13,20 +13,22 @@ export function SideBar() {
     <div>
       <div className="sidebarContainer">
         <div>
-          <div className="logoContainer">
-            <Image
-              src="/image.png"
-              alt="Picture of the author"
-              width={80}
-              height={80}
-              objectFit="contain"
-              className="img"
-            />
-            <div className="titleContainer">
-              <p className="pTitle">API BackOffice</p>
-              <IoMdArrowDropdown color="#4535B3" />
+          <a href="/home?pagination=1">
+            <div className="logoContainer">
+              <Image
+                src="/image.png"
+                alt="Picture of the author"
+                width={80}
+                height={80}
+                objectFit="contain"
+                className="img"
+              />
+              <div className="titleContainer">
+                <p className="pTitle">API BackOffice</p>
+                <IoMdArrowDropdown color="#4535B3" />
+              </div>
             </div>
-          </div>
+          </a>
           <div className="liContainer">
             {asPath.includes("home") ? (
               <div className="liElement">
@@ -48,7 +50,7 @@ export function SideBar() {
                   cssDiv={"buttonDiv"}
                   cssText={"buttonTextNotSelected"}
                   ClickFonction={() => {
-                    router.push("/home");
+                    router.push("/home?pagination=1");
                   }}
                 />
               </div>

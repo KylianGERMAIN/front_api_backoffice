@@ -45,9 +45,6 @@ export function ArticleFrame({
         setUpdateModal(true);
       }}
     >
-      <td className="tdElement">
-        <input type="checkbox" id="scales" name="scales" />
-      </td>
       <td className="tdElement">{new Date(parseInt(date)).toLocaleString()}</td>
       <td className="tdElement">{title}</td>
       <td className="tdElement">{content}</td>
@@ -56,7 +53,7 @@ export function ArticleFrame({
           <IconButton
             text={""}
             icon={<RiDeleteBin5Fill color={"#4535B3"} size={20} />}
-            cssDiv={"pr-4"}
+            cssDiv={""}
             cssText={""}
             ClickFonction={() => {
               removeArticle(id);

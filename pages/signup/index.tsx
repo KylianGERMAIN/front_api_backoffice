@@ -61,7 +61,7 @@ export default function Register() {
                   setError("");
                   setError(await signUpAPI(Email, Password));
                   if (Error === "") {
-                    router.push("/home");
+                    router.push("/home?pagination=1");
                   }
                   setLoading(false);
                 } else {

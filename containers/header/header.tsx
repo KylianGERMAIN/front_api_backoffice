@@ -20,17 +20,19 @@ const Header = ({}: Props) => {
   return (
     <Popover className={"burgerMenu"}>
       <div className="headerspace">
-        <div className="logoContainer">
-          <Image
-            src="/image.png"
-            alt="Picture of the author"
-            width={40}
-            height={40}
-            objectFit="contain"
-            className="img"
-          />
-          <p className="pTitle">API BackOffice</p>
-        </div>
+        <a href="/home?pagination=1">
+          <div className="logoContainer">
+            <Image
+              src="/image.png"
+              alt="Picture of the author"
+              width={40}
+              height={40}
+              objectFit="contain"
+              className="img"
+            />
+            <p className="pTitle">API BackOffice</p>
+          </div>{" "}
+        </a>
         <Popover.Button className="openButton">
           <GiHamburgerMenu size={30} color={"#4535B3"} />
         </Popover.Button>
@@ -69,7 +71,7 @@ const Header = ({}: Props) => {
                   cssDiv={"buttonDiv"}
                   cssText={"buttonTextNotSelected"}
                   ClickFonction={() => {
-                    router.push("/home");
+                    router.push("/home?pagination=1");
                   }}
                 />
               </div>

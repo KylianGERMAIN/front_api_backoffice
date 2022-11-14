@@ -5,7 +5,9 @@
         height: 100%;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
-        border: solid 30px rgb(243, 243, 243);
+        border-left: solid 30px rgb(243, 243, 243);
+        border-right: solid 30px rgb(243, 243, 243);
+        border-top: solid 30px rgb(243, 243, 243);
 
         .containerHeader {
             gap: 20px;
