@@ -18,10 +18,10 @@ interface Props {
   date: string;
   id: string;
   removeArticle: any;
-  //   icon: any;
-  //   cssDiv: string;
-  //   cssText: string;
-  //   ClickFonction: (text: string | JSX.Element) => void;
+  setUpdateTitle: any;
+  setUpdateContent: any;
+  setUpdateModal: any;
+  setUpdateId: any;
 }
 
 export function ArticleFrame({
@@ -30,9 +30,21 @@ export function ArticleFrame({
   content,
   id,
   removeArticle,
+  setUpdateTitle,
+  setUpdateContent,
+  setUpdateModal,
+  setUpdateId,
 }: Props) {
   return (
-    <tr className="rowTable">
+    <tr
+      className="rowTable"
+      onClick={() => {
+        setUpdateTitle(title);
+        setUpdateContent(content);
+        setUpdateId(id);
+        setUpdateModal(true);
+      }}
+    >
       <td className="tdElement">
         <input type="checkbox" id="scales" name="scales" />
       </td>
@@ -48,7 +60,6 @@ export function ArticleFrame({
             cssText={""}
             ClickFonction={() => {
               removeArticle(id);
-              // deleteArticle(id);
             }}
           />
         </div>

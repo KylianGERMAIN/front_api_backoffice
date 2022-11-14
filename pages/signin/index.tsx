@@ -51,10 +51,6 @@ export default function Login() {
               placeholder="•••••••"
             />
           </div>
-          {/* <p className="text-sm text-gray-500 text-left pb-8">
-              <a className="text-[#4535B3] cursor-pointer">Forgot password</a>
-            </p> */}
-
           <p className="errorMessage">{Error}</p>
           {Loading === false ? (
             <Button
@@ -63,11 +59,9 @@ export default function Login() {
               cssText="buttonText"
               ClickFonction={async () => {
                 if (Email != "" && Password != "") {
-                  console.log("lol");
                   setLoading(true);
                   setError("");
                   setError(await signInAPI(Email, Password));
-                  console.log(Error);
                   if (Error === "") {
                     router.push("/home");
                   }

@@ -20,8 +20,6 @@ const Layout = ({ children, paddingBottom = false, lang }: Props) => (
       <div className="minsize"></div>
       {children}
     </div>
-
-    {/* <Footer customClassName={paddingBottom ? 'mt-10' : ''} /> */}
   </div>
 );
 

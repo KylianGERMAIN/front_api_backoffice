@@ -94,7 +94,7 @@
         }
     }
 
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 1024px) {
         .partSign {
             width: 50%;
         }
@@ -109,7 +109,7 @@
     width: 50%;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
     .signVisuel {
         display: none;
     }

@@ -31,7 +31,6 @@ export async function signInAPI(
     });
     return "";
   } catch (error: any) {
-    console.log(error);
     if (error.response.data.errors === undefined) {
       return errorListAuth(error.response.data.message);
     } else {

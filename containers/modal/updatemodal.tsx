@@ -2,33 +2,37 @@ import React, { useEffect, useState } from "react";
 
 import { AiOutlineClose } from "react-icons/ai";
 import { Button } from "../../components/buttons/buttons";
-import { createArticle } from "../../pages/api/articles/post";
+import { createArticle, updateArticle } from "../../pages/api/articles/post";
 
 interface Props {
   status: boolean;
   setStatus: any;
   setLoading: any;
+  title: string;
+  content: string;
+  id: string;
+  setUpdateTitle: any;
+  setUpdateContent: any;
 }
 
-export function Modal({ status, setStatus, setLoading }: Props) {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
-
+export function UpdateModal({
+  status,
+  setStatus,
+  setLoading,
+  title,
+  content,
+  id,
+  setUpdateTitle,
+  setUpdateContent,
+}: Props) {
   if (status) {
     return (
       <div className="modal">
         <div className="container">
           <div className="topBar">
-            <h1>Ajouter un Article</h1>
+            <h1>Modifer un Article</h1>
             <button>
-              <AiOutlineClose
-                size={20}
-                onClick={() => {
-                  setStatus(false);
-                  setTitle("");
-                  setContent("");
-                }}
-              />
+              <AiOutlineClose size={20} onClick={() => setStatus(false)} />
             </button>
           </div>
 
@@ -40,7 +44,7 @@ export function Modal({ status, setStatus, setLoading }: Props) {
                 type="text"
                 id="last"
                 name="last"
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => setUpdateTitle(e.target.value)}
                 value={title}
               />
             </div>
@@ -50,7 +54,7 @@ export function Modal({ status, setStatus, setLoading }: Props) {
               <textarea
                 rows={4}
                 cols={50}
-                onChange={(e) => setContent(e.target.value)}
+                onChange={(e) => setUpdateContent(e.target.value)}
                 value={content}
               />
             </div>
@@ -59,11 +63,7 @@ export function Modal({ status, setStatus, setLoading }: Props) {
                 text="Annuler"
                 cssDiv="buttonDiv"
                 cssText="buttonText"
-                ClickFonction={async () => {
-                  setStatus(false);
-                  setTitle("");
-                  setContent("");
-                }}
+                ClickFonction={async () => setStatus(false)}
                 icon={undefined}
               />
 
@@ -73,12 +73,10 @@ export function Modal({ status, setStatus, setLoading }: Props) {
                 cssText="buttonText"
                 ClickFonction={async () => {
                   if (title != "" && content != "") {
-                    var result = await createArticle(title, content);
+                    var result = await updateArticle(id, title, content);
                     if (!result.error) {
                       setStatus(false);
                       setLoading(true);
-                      setTitle("");
-                      setContent("");
                     }
                   }
                 }}

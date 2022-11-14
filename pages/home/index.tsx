@@ -7,28 +7,48 @@ import Layout from "../../components/layout/layout";
 import HeaderArticles from "../../components/header/headerArticle";
 import { FaSearch } from "react-icons/fa";
 import { AiOutlinePlus } from "react-icons/ai";
-import { IconButton } from "../../components/buttons/buttons";
+import { Button, IconButton } from "../../components/buttons/buttons";
 import { ArticleFrame } from "../../containers/home/articleFrame";
 import { Article } from "../../interface/article";
 import { deleteArticle } from "../api/articles/post";
 import { Modal } from "../../containers/modal/modal";
+import { UpdateModal } from "../../containers/modal/updatemodal";
 
 export default function Home() {
-  const router = useRouter();
+  var router = useRouter();
   const [totalArticle, setTotalArticle] = useState("");
+  const [Pagination, setPagination] = useState("1");
+  const [PageCount, setPageCount] = useState();
   const [search, setSearch] = useState("");
   const [Articles, setArticles] = useState<Article[]>();
   const [isLoading, setLoading] = useState(true);
   const [modal, setModal] = useState(false);
 
+  const [updateModal, setUpdateModal] = useState(false);
+  const [updateTitle, setUpdateTitle] = useState("");
+  const [updateContent, setUpdateContent] = useState("");
+  const [updateID, setUpdateId] = useState("");
+
   if (isLoading === true) {
+    setup();
+  }
+
+  async function setup() {
+    const urlSearchParams = new URLSearchParams(window.location.search);
     var querySearch = "";
-    if (router.query.search) {
-      querySearch = router.query.search as string;
+    var pagination = "1";
+    const routerr = await useRouter();
+    if (urlSearchParams.get("search")) {
+      querySearch = urlSearchParams.get("search") as string;
     }
-    getArticle(querySearch).then(function (result) {
+    if (urlSearchParams.get("pagination")) {
+      pagination = urlSearchParams.get("pagination") as string;
+    }
+    getArticle(querySearch, pagination).then(function (result) {
       if (result.error == undefined) {
         setTotalArticle(result.data.meta.pagination.total);
+        setPageCount(result.data.meta.pagination.pageCount);
+        setPagination(pagination);
         var article: Article[] = [];
         for (var i = 0; i != result.data.data.length; i++) {
           article.push({
@@ -46,9 +66,7 @@ export default function Home() {
   }
 
   async function removeArticle(str: string) {
-    console.log(str);
     var result = await deleteArticle(str);
-    console.log(result);
     if (!result.error) {
       setArticles((current: any) => current.filter((i: any) => i.id !== str));
       setLoading(true);
@@ -67,7 +85,21 @@ export default function Home() {
         {isLoading === false ? (
           <>
             <div className="containerHome">
-              <Modal status={modal} setStatus={setModal} />
+              <Modal
+                status={modal}
+                setStatus={setModal}
+                setLoading={setLoading}
+              />
+              <UpdateModal
+                status={updateModal}
+                setStatus={setUpdateModal}
+                setLoading={setLoading}
+                title={updateTitle}
+                content={updateContent}
+                id={updateID}
+                setUpdateTitle={setUpdateTitle}
+                setUpdateContent={setUpdateContent}
+              />
               <div className="containerHeader">
                 <HeaderArticles totalArticle={totalArticle} />
                 <div className="searchContainer">
@@ -101,7 +133,47 @@ export default function Home() {
               <div className="tableMain">
                 <div className="tableContainer">
                   <div className="topTable">
-                    <p>All Articles</p>
+                    <span>All Articles</span>
+                    <div className="paginationContainer">
+                      {router.query.pagination != "1" ? (
+                        <Button
+                          text="Précédent"
+                          cssDiv="buttonDiv"
+                          cssText="textButton"
+                          ClickFonction={async () => {
+                            if (router.query.pagination) {
+                              router.query.pagination = String(
+                                Number(router.query.pagination) - 1
+                              );
+                              router.push(router);
+                              setLoading(true);
+                            }
+                          }}
+                          icon={undefined}
+                        />
+                      ) : null}
+                      {String(PageCount) != Pagination ? (
+                        <Button
+                          text="Suivant"
+                          cssDiv="buttonDiv"
+                          cssText="textButton"
+                          ClickFonction={async () => {
+                            if (router.query.pagination) {
+                              router.query.pagination = String(
+                                Number(router.query.pagination) + 1
+                              );
+                              router.push(router);
+                              setLoading(true);
+                            } else {
+                              router.query.pagination = "2";
+                              router.push(router);
+                              setLoading(true);
+                            }
+                          }}
+                          icon={undefined}
+                        />
+                      ) : null}
+                    </div>
                     <button
                       onClick={() => {
                         setModal(true);
@@ -132,6 +204,10 @@ export default function Home() {
                               date={element.date}
                               id={element.id}
                               removeArticle={removeArticle}
+                              setUpdateTitle={setUpdateTitle}
+                              setUpdateContent={setUpdateContent}
+                              setUpdateModal={setUpdateModal}
+                              setUpdateId={setUpdateId}
                             />
                           ))
                         : null}
