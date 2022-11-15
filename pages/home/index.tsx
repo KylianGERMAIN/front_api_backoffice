@@ -113,7 +113,7 @@ export default function Home() {
                       name="last"
                       onChange={(e) => setSearch(e.target.value)}
                       value={search}
-                      placeholder="Votre recherche"
+                      placeholder="Your search"
                     />
                     <IconButton
                       text=""
@@ -172,7 +172,7 @@ export default function Home() {
               <div className="paginationContainer">
                 {Pagination != "1" ? (
                   <Button
-                    text="Précédent"
+                    text="Previous"
                     cssDiv="buttonDiv"
                     cssText="textButton"
                     ClickFonction={async () => {
@@ -189,7 +189,7 @@ export default function Home() {
                 ) : null}
                 {String(PageCount) != Pagination && String(PageCount) != "0" ? (
                   <Button
-                    text="Suivant"
+                    text="Next"
                     cssDiv="buttonDiv"
                     cssText="textButton"
                     ClickFonction={async () => {

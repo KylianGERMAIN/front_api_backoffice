@@ -30,7 +30,7 @@ export function UpdateModal({
       <div className="modal">
         <div className="container">
           <div className="topBar">
-            <h1>Modifer un Article</h1>
+            <h1>Update an Article</h1>
             <button>
               <AiOutlineClose size={20} onClick={() => setStatus(false)} />
             </button>
@@ -60,7 +60,7 @@ export function UpdateModal({
             </div>
             <div className="buttonContainer">
               <Button
-                text="Annuler"
+                text="Cancel"
                 cssDiv="buttonDiv"
                 cssText="buttonText"
                 ClickFonction={async () => setStatus(false)}
@@ -68,7 +68,7 @@ export function UpdateModal({
               />
 
               <Button
-                text="Modifer"
+                text="Update"
                 cssDiv="buttonDiv"
                 cssText="buttonText"
                 ClickFonction={async () => {

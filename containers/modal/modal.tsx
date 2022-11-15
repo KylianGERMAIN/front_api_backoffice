@@ -19,7 +19,7 @@ export function Modal({ status, setStatus, setLoading }: Props) {
       <div className="modal">
         <div className="container">
           <div className="topBar">
-            <h1>Ajouter un Article</h1>
+            <h1>Add an Article</h1>
             <button>
               <AiOutlineClose
                 size={20}
@@ -56,7 +56,7 @@ export function Modal({ status, setStatus, setLoading }: Props) {
             </div>
             <div className="buttonContainer">
               <Button
-                text="Annuler"
+                text="Cancel"
                 cssDiv="buttonDiv"
                 cssText="buttonText"
                 ClickFonction={async () => {
@@ -68,7 +68,7 @@ export function Modal({ status, setStatus, setLoading }: Props) {
               />
 
               <Button
-                text="Créer"
+                text="Create"
                 cssDiv="buttonDiv"
                 cssText="buttonText"
                 ClickFonction={async () => {
