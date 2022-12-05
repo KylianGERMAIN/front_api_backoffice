@@ -1,10 +1,4 @@
-# This is a simple reproduction of the site of [Apple.com](https://www.apple.com/)
-
-# Description 
-Based directly on the website the whole page was made in scss <br/> <br/>
-Enjoy  🎉
-
-# Installation
+# This is the front of [API_BackOffice](https://github.com/KylianGERMAIN/API_BackOffice)
 
 First, run the development server:
 
@@ -15,3 +9,4 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
