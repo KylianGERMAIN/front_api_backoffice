@@ -15,81 +15,88 @@ export default function Register() {
   const router = useRouter();
 
   return (
-    <div className="mainSignin">
-      <div className="partSign">
-        <div className="containerSign">
-          <div className="containerTitle">
-            <p className="title">Welcome</p>
-            <p className="description">Welcome! Please enter your details</p>
-          </div>
-          <div className="inputContainer">
-            <label className="label" htmlFor="first">
-              Email
-            </label>
-            <input
-              onChange={(e) => setEmail(e.target.value)}
-              value={Email}
-              className="input"
-              type="email"
-              placeholder="Enter your email"
-            />
-          </div>
+      <div className="mainSignin">
+          <div className="partSign">
+              <div className="containerSign">
+                  <div className="containerTitle">
+                      <p className="title">Welcome</p>
+                      <p className="description">
+                          Welcome! Please enter your details
+                      </p>
+                  </div>
+                  <div className="inputContainer">
+                      <label className="label" htmlFor="first">
+                          Email
+                      </label>
+                      <input
+                          onChange={(e) => setEmail(e.target.value)}
+                          value={Email}
+                          className="input"
+                          type="email"
+                          placeholder="Enter your email"
+                      />
+                  </div>
 
-          <div className="inputContainer">
-            <label className="label" htmlFor="last">
-              Password
-            </label>
-            <input
-              onChange={(e) => setPassword(e.target.value)}
-              value={Password}
-              className="input"
-              type="password"
-              id="first"
-              name="first"
-              placeholder="•••••••"
-            />
+                  <div className="inputContainer">
+                      <label className="label" htmlFor="last">
+                          Password
+                      </label>
+                      <input
+                          onChange={(e) => setPassword(e.target.value)}
+                          value={Password}
+                          className="input"
+                          type="password"
+                          id="first"
+                          name="first"
+                          placeholder="•••••••"
+                      />
+                  </div>
+                  <p className="errorMessage">{Error}</p>
+                  {Loading === false ? (
+                      <Button
+                          text="Sign up"
+                          cssDiv="buttonDiv"
+                          cssText="buttonText"
+                          ClickFonction={async () => {
+                              if (Email != "" && Password != "") {
+                                  setLoading(true);
+                                  setError("");
+                                  setError(await signUpAPI(Email, Password));
+                                  if (Error === "") {
+                                      router.push("/home?pagination=1");
+                                  }
+                                  setLoading(false);
+                              } else {
+                                  errorVoidInput(Email, Password, setError);
+                              }
+                          }}
+                          icon={undefined}
+                      />
+                  ) : (
+                      <IconButton
+                          text=""
+                          cssDiv="buttonDiv"
+                          cssText="buttonText"
+                          ClickFonction={async () => {}}
+                          icon={
+                              <Image
+                                  src="/loading.svg"
+                                  alt="next"
+                                  width={25}
+                                  height={25}
+                              />
+                          }
+                      />
+                  )}
+                  <p className="noAccount">
+                      Already have an account?{" "}
+                      <Link href="/signin">
+                          <span className="link">Sign in</span>
+                      </Link>
+                  </p>
+              </div>
           </div>
-          <p className="errorMessage">{Error}</p>
-          {Loading === false ? (
-            <Button
-              text="Sign up"
-              cssDiv="buttonDiv"
-              cssText="buttonText"
-              ClickFonction={async () => {
-                if (Email != "" && Password != "") {
-                  setLoading(true);
-                  setError("");
-                  setError(await signUpAPI(Email, Password));
-                  if (Error === "") {
-                    router.push("/home?pagination=1");
-                  }
-                  setLoading(false);
-                } else {
-                  errorVoidInput(Email, Password, setError);
-                }
-              }}
-              icon={undefined}
-            />
-          ) : (
-            <IconButton
-              text=""
-              cssDiv="buttonDiv"
-              cssText="buttonText"
-              ClickFonction={async () => {}}
-              icon={
-                <Image src="/loading.svg" alt="next" width={25} height={25} />
-              }
-            />
-          )}
-          <p className="noAccount">
-            Already have an account?{" "}
-            <Link href="/signin">
-              <a className="link">Sign in</a>
-            </Link>
-          </p>
-        </div>
+          <SignVisuel src={"/image.png"} alt={"Picture of the author"} />
       </div>
-      <SignVisuel src={"/image.png"} alt={"Picture of the author"} />
-    </div>
   );
 }
