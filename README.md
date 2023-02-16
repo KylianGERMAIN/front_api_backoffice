@@ -10,3 +10,11 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+# Environnement
+
+Here is the environment that the project needs :
+
+```
+NEXT_PUBLIC_API_URL=
+
+```
