@@ -1,4 +1,3 @@
-
 .headerSection {
     display: grid;
     height: 100%;
@@ -9,8 +8,7 @@
 }
 
 @media only screen and (min-width: 1024px) {
-   
-    .headerSection  {
+    .headerSection {
         display: none;
     }
 
@@ -20,4 +18,3 @@
         height: 100vh;
     }
 }
-
